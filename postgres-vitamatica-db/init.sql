@@ -1,5 +1,5 @@
 -- Patients Table
-CREATE TABLE patients (
+CREATE TABLE patient (
                           patient_id VARCHAR(50) PRIMARY KEY,
                           first_name VARCHAR(50),
                           last_name VARCHAR(50),
@@ -10,7 +10,7 @@ CREATE TABLE patients (
 -- Contact Info Table
 CREATE TABLE contact_info (
                               contact_id SERIAL PRIMARY KEY,
-                              patient_id VARCHAR(50) REFERENCES patients(patient_id),
+                              patient_id VARCHAR(50) REFERENCES patient(patient_id),
                               phone VARCHAR(15),
                               email VARCHAR(100),
                               street VARCHAR(100),
@@ -23,7 +23,7 @@ CREATE TABLE contact_info (
 -- Medical History Table
 CREATE TABLE medical_history (
                                  history_id SERIAL PRIMARY KEY,
-                                 patient_id VARCHAR(50) REFERENCES patients(patient_id),
+                                 patient_id VARCHAR(50) REFERENCES patient(patient_id),
                                  type VARCHAR(50),
                                  description TEXT,
                                  additional_info JSONB
@@ -32,7 +32,7 @@ CREATE TABLE medical_history (
 -- Family History Table
 CREATE TABLE family_history (
                                 family_id SERIAL PRIMARY KEY,
-                                patient_id VARCHAR(50) REFERENCES patients(patient_id),
+                                patient_id VARCHAR(50) REFERENCES patient(patient_id),
                                 relationship VARCHAR(50),
                                 condition VARCHAR(100),
                                 age_at_diagnosis INT,
@@ -43,7 +43,7 @@ CREATE TABLE family_history (
 -- Immunizations Table
 CREATE TABLE immunizations (
                                immunization_id SERIAL PRIMARY KEY,
-                               patient_id VARCHAR(50) REFERENCES patients(patient_id),
+                               patient_id VARCHAR(50) REFERENCES patient(patient_id),
                                vaccine VARCHAR(100),
                                date_administered DATE,
                                dose_number INT,
@@ -54,7 +54,7 @@ CREATE TABLE immunizations (
 -- Vital Signs Table
 CREATE TABLE vital_signs (
                              vital_sign_id SERIAL PRIMARY KEY,
-                             patient_id VARCHAR(50) REFERENCES patients(patient_id),
+                             patient_id VARCHAR(50) REFERENCES patient(patient_id),
                              date DATE,
                              blood_pressure_systolic INT,
                              blood_pressure_diastolic INT,
@@ -67,7 +67,7 @@ CREATE TABLE vital_signs (
 -- Lab Results Table
 CREATE TABLE lab_results (
                              lab_result_id SERIAL PRIMARY KEY,
-                             patient_id VARCHAR(50) REFERENCES patients(patient_id),
+                             patient_id VARCHAR(50) REFERENCES patient(patient_id),
                              test_name VARCHAR(100),
                              result TEXT,  -- Changed from VARCHAR(50) to TEXT
                              date DATE,
@@ -75,21 +75,21 @@ CREATE TABLE lab_results (
                              notes TEXT
 );
 
--- Visits Table
-CREATE TABLE visits (
-                        visit_id SERIAL PRIMARY KEY,
-                        patient_id VARCHAR(50) REFERENCES patients(patient_id),
-                        visit_date DATE,
-                        clinic VARCHAR(100),
-                        doctor VARCHAR(100),
-                        reason_for_visit TEXT,
-                        diagnosis TEXT
+-- Create MedicalVisits table
+CREATE TABLE medical_visits (
+                                visit_id SERIAL PRIMARY KEY,
+                                patient_id VARCHAR(50) REFERENCES patient(patient_id),
+                                visit_date DATE NOT NULL,
+                                clinic VARCHAR(100),
+                                doctor VARCHAR(100),
+                                reason_for_visit TEXT,
+                                diagnosis TEXT
 );
 
 -- Insurance Details Table
 CREATE TABLE insurance_details (
                                    insurance_id SERIAL PRIMARY KEY,
-                                   patient_id VARCHAR(50) REFERENCES patients(patient_id),
+                                   patient_id VARCHAR(50) REFERENCES patient(patient_id),
                                    provider VARCHAR(100),
                                    policy_number VARCHAR(50),
                                    coverage_start_date DATE,
@@ -99,7 +99,7 @@ CREATE TABLE insurance_details (
 -- Billing Info Table
 CREATE TABLE billing_info (
                               billing_id SERIAL PRIMARY KEY,
-                              patient_id VARCHAR(50) REFERENCES patients(patient_id),
+                              patient_id VARCHAR(50) REFERENCES patient(patient_id),
                               last_billed_date DATE,
                               total_amount_due FLOAT,
                               last_payment_date DATE,
@@ -110,7 +110,7 @@ CREATE TABLE billing_info (
 -- Social History Table
 CREATE TABLE social_history (
                                 social_id SERIAL PRIMARY KEY,
-                                patient_id VARCHAR(50) REFERENCES patients(patient_id),
+                                patient_id VARCHAR(50) REFERENCES patient(patient_id),
                                 smoking_status VARCHAR(50),
                                 alcohol_use VARCHAR(50),
                                 exercise_frequency VARCHAR(50),
@@ -122,7 +122,7 @@ CREATE TABLE social_history (
 -- Psychiatric History Table
 CREATE TABLE psychiatric_history (
                                      psychiatric_id SERIAL PRIMARY KEY,
-                                     patient_id VARCHAR(50) REFERENCES patients(patient_id),
+                                     patient_id VARCHAR(50) REFERENCES patient(patient_id),
                                      condition VARCHAR(100),
                                      diagnosed_date DATE,
                                      treatment_plan TEXT,
@@ -133,7 +133,7 @@ CREATE TABLE psychiatric_history (
 -- Rehabilitation and Physical Therapy Table
 CREATE TABLE rehabilitation (
                                 rehab_id SERIAL PRIMARY KEY,
-                                patient_id VARCHAR(50) REFERENCES patients(patient_id),
+                                patient_id VARCHAR(50) REFERENCES patient(patient_id),
                                 condition VARCHAR(100),
                                 therapy_plan TEXT,
                                 therapist_name VARCHAR(100),
@@ -145,7 +145,7 @@ CREATE TABLE rehabilitation (
 -- Pharmacy Information Table
 CREATE TABLE pharmacy_info (
                                pharmacy_id SERIAL PRIMARY KEY,
-                               patient_id VARCHAR(50) REFERENCES patients(patient_id),
+                               patient_id VARCHAR(50) REFERENCES patient(patient_id),
                                preferred_pharmacy VARCHAR(100),
                                street VARCHAR(100),
                                city VARCHAR(50),
@@ -159,7 +159,7 @@ CREATE TABLE pharmacy_info (
 -- Advanced Directives Table
 CREATE TABLE advanced_directives (
                                      directive_id SERIAL PRIMARY KEY,
-                                     patient_id VARCHAR(50) REFERENCES patients(patient_id),
+                                     patient_id VARCHAR(50) REFERENCES patient(patient_id),
                                      do_not_resuscitate BOOLEAN,
                                      organ_donor BOOLEAN,
                                      living_will BOOLEAN,
@@ -169,7 +169,7 @@ CREATE TABLE advanced_directives (
 -- Referral Information Table
 CREATE TABLE referral_info (
                                referral_id SERIAL PRIMARY KEY,
-                               patient_id VARCHAR(50) REFERENCES patients(patient_id),
+                               patient_id VARCHAR(50) REFERENCES patient(patient_id),
                                referred_by VARCHAR(100),
                                referred_to VARCHAR(100),
                                reason_for_referral TEXT
@@ -178,7 +178,7 @@ CREATE TABLE referral_info (
 -- Emergency Contacts Table
 CREATE TABLE emergency_contacts (
                                     contact_id SERIAL PRIMARY KEY,
-                                    patient_id VARCHAR(50) REFERENCES patients(patient_id),
+                                    patient_id VARCHAR(50) REFERENCES patient(patient_id),
                                     name VARCHAR(100),
                                     relationship VARCHAR(50),
                                     phone VARCHAR(15),
@@ -187,8 +187,8 @@ CREATE TABLE emergency_contacts (
 
 -- Insert Sample Data
 
--- Patients
-INSERT INTO patients (patient_id, first_name, last_name, date_of_birth, gender) VALUES
+-- Patient
+INSERT INTO patient (patient_id, first_name, last_name, date_of_birth, gender) VALUES
                                                                                     ('12345', 'John', 'Doe', '1985-07-20', 'Male'),
                                                                                     ('12346', 'Jane', 'Smith', '1990-03-10', 'Female'),
                                                                                     ('12347', 'Mike', 'Johnson', '1975-12-05', 'Male'),
@@ -243,13 +243,14 @@ INSERT INTO lab_results (patient_id, test_name, result, date, normal_range, note
                                                                                        ('12348', 'Lipid Panel', '{"total_cholesterol": "175 mg/dL", "hdl": "50 mg/dL", "ldl": "110 mg/dL", "triglycerides": "120 mg/dL"}', '2024-08-18', 'Cholesterol <200 mg/dL', 'Normal'),
                                                                                        ('12349', 'Hemoglobin A1C', '7.0%', '2024-08-20', '4.0% - 5.6%', 'Elevated');
 
--- Visits
-INSERT INTO visits (patient_id, visit_date, clinic, doctor, reason_for_visit, diagnosis) VALUES
-                                                                                             ('12345', '2024-09-01', 'Anytown Medical Center', 'Dr. Jane Smith', 'Routine checkup', 'Stable'),
-                                                                                             ('12346', '2024-09-02', 'Anytown Medical Center', 'Dr. Jane Smith', 'Follow-up on diabetes', 'Improving'),
-                                                                                             ('12347', '2024-09-03', 'Anytown Medical Center', 'Dr. Alex Green', 'Blood pressure check', 'Elevated BP'),
-                                                                                             ('12348', '2024-09-04', 'Anytown Medical Center', 'Dr. Olivia Scott', 'Cholesterol management', 'Improving'),
-                                                                                             ('12349', '2024-09-05', 'Anytown Medical Center', 'Dr. Emma Wilson', 'Routine checkup', 'Stable');
+
+-- Insert 5 sample dummy records into MedicalVisits table
+INSERT INTO medical_visits (patient_id, visit_date, clinic, doctor, reason_for_visit, diagnosis) VALUES
+                                                                                                     ('12345', '2024-09-01', 'Anytown Medical Center', 'Dr. Jane Smith', 'Routine checkup', 'Stable'),
+                                                                                                     ('12346', '2024-09-02', 'Downtown Clinic', 'Dr. John Doe', 'Follow-up on diabetes', 'Improving'),
+                                                                                                     ('12347', '2024-08-25', 'HealthCare Plus Clinic', 'Dr. Sarah Johnson', 'High blood pressure', 'Elevated BP'),
+                                                                                                     ('12348', '2024-07-15', 'Wellness Clinic', 'Dr. Michael Lee', 'Cholesterol management', 'Normalizing cholesterol levels'),
+                                                                                                     ('12349', '2024-06-30', 'Primary Health Center', 'Dr. Emily Davis', 'Annual physical exam', 'Healthy');
 
 -- Insurance Details
 INSERT INTO insurance_details (patient_id, provider, policy_number, coverage_start_date, coverage_end_date) VALUES
