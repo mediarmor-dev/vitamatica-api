@@ -1,0 +1,217 @@
+{
+  "patient_id": "12345",
+  "first_name": "John",
+  "last_name": "Doe",
+  "date_of_birth": "1985-07-20",
+  "gender": "Male",
+  "contact_info": {
+    "phone": "+1-555-555-5555",
+    "email": "johndoe@example.com",
+    "address": {
+      "street": "123 Main St",
+      "city": "Anytown",
+      "state": "CA",
+      "zip_code": "90210",
+      "country": "USA"
+    }
+  },
+  "medical_history": {
+    "allergies": [
+      {
+        "substance": "Peanuts",
+        "reaction": "Anaphylaxis",
+        "recorded_date": "2010-06-15"
+      }
+    ],
+    "medications": [
+      {
+        "name": "Metformin",
+        "dosage": "500 mg",
+        "frequency": "Once daily",
+        "start_date": "2020-01-10"
+      }
+    ],
+    "diagnoses": [
+      {
+        "condition": "Type 2 Diabetes",
+        "diagnosed_date": "2019-11-20",
+        "notes": "Under control with medication"
+      }
+    ],
+    "surgeries": [
+      {
+        "procedure": "Appendectomy",
+        "date": "2015-05-22",
+        "hospital": "Anytown General Hospital",
+        "surgeon": "Dr. Smith"
+      }
+    ]
+  },
+  "family_history": [
+    {
+      "relationship": "Father",
+      "condition": "Hypertension",
+      "age_at_diagnosis": 55,
+      "deceased": false
+    },
+    {
+      "relationship": "Mother",
+      "condition": "Breast Cancer",
+      "age_at_diagnosis": 60,
+      "deceased": true,
+      "age_at_death": 65
+    }
+  ],
+  "immunizations": [
+    {
+      "vaccine": "COVID-19",
+      "date_administered": "2021-03-15",
+      "dose_number": 2,
+      "lot_number": "123456",
+      "administered_by": "Dr. Jane Smith"
+    },
+    {
+      "vaccine": "Influenza",
+      "date_administered": "2023-10-01",
+      "dose_number": 1,
+      "lot_number": "654321",
+      "administered_by": "Nurse Michael Johnson"
+    }
+  ],
+  "vital_signs": [
+    {
+      "date": "2024-09-01",
+      "blood_pressure": {
+        "systolic": 120,
+        "diastolic": 80
+      },
+      "heart_rate": 72,
+      "respiratory_rate": 16,
+      "temperature": 98.6,
+      "oxygen_saturation": 98
+    }
+  ],
+  "lab_results": [
+    {
+      "test_name": "Hemoglobin A1C",
+      "result": "6.4%",
+      "date": "2024-08-15",
+      "normal_range": "4.0% - 5.6%",
+      "notes": "Elevated"
+    },
+    {
+      "test_name": "Lipid Panel",
+      "results": {
+        "total_cholesterol": "190 mg/dL",
+        "hdl": "45 mg/dL",
+        "ldl": "120 mg/dL",
+        "triglycerides": "150 mg/dL"
+      },
+      "date": "2024-08-10",
+      "normal_range": "Cholesterol <200 mg/dL, HDL >40 mg/dL",
+      "notes": "Borderline high LDL"
+    }
+  ],
+  "visits": [
+    {
+      "visit_id": "98765",
+      "date": "2024-09-01",
+      "clinic": "Anytown Medical Center",
+      "doctor": "Dr. Jane Smith",
+      "reason_for_visit": "Routine checkup",
+      "diagnosis": "Stable"
+    },
+    {
+      "visit_id": "98766",
+      "date": "2024-06-15",
+      "clinic": "Anytown Medical Center",
+      "doctor": "Dr. Jane Smith",
+      "reason_for_visit": "Follow-up on diabetes",
+      "diagnosis": "Improving"
+    }
+  ],
+  "insurance_details": {
+    "provider": "Blue Cross",
+    "policy_number": "BC123456789",
+    "coverage_start_date": "2021-01-01",
+    "coverage_end_date": "2025-01-01"
+  },
+  "billing_info": {
+    "last_billed_date": "2024-08-25",
+    "total_amount_due": 200.00,
+    "last_payment_date": "2024-08-30",
+    "insurance_covered": 150.00,
+    "patient_responsible": 50.00
+  },
+  "social_history": {
+    "smoking_status": "Never",
+    "alcohol_use": "Occasional",
+    "exercise_frequency": "3 times a week",
+    "dietary_preferences": "Vegetarian",
+    "occupation": "Software Engineer",
+    "marital_status": "Single"
+  },
+  "psychiatric_history": [
+    {
+      "condition": "Generalized Anxiety Disorder",
+      "diagnosed_date": "2020-02-20",
+      "treatment_plan": "Cognitive Behavioral Therapy",
+      "medications": [
+        {
+          "name": "Sertraline",
+          "dosage": "50 mg",
+          "frequency": "Once daily"
+        }
+      ],
+      "notes": "Patient responds well to therapy"
+    }
+  ],
+  "rehabilitation_and_physical_therapy": [
+    {
+      "condition": "Lower back pain",
+      "therapy_plan": "Physical Therapy",
+      "therapist_name": "Dr. Emma Wilson",
+      "sessions_per_week": 2,
+      "start_date": "2024-07-01",
+      "progress_notes": "Significant improvement in mobility"
+    }
+  ],
+  "pharmacy_information": {
+    "preferred_pharmacy": {
+      "name": "Anytown Pharmacy",
+      "address": {
+        "street": "456 Pharmacy Blvd",
+        "city": "Anytown",
+        "state": "CA",
+        "zip_code": "90210",
+        "country": "USA"
+      },
+      "phone": "+1-555-789-1011"
+    },
+    "last_prescription_filled": {
+      "medication": "Metformin",
+      "date_filled": "2024-08-15",
+      "refills_left": 3,
+      "pharmacy": "Anytown Pharmacy"
+    }
+  },
+  "advanced_directives": {
+    "do_not_resuscitate": false,
+    "organ_donor": true,
+    "living_will": true,
+    "power_of_attorney": "Jane Doe (Sister)"
+  },
+  "referral_info": {
+    "referred_by": "Dr. Jane Smith",
+    "referred_to": "Dr. Michael Lee (Endocrinologist)",
+    "reason_for_referral": "Diabetes management"
+  },
+  "emergency_contacts": [
+    {
+      "name": "Jane Doe",
+      "relationship": "Sister",
+      "phone": "+1-555-123-4567",
+      "email": "janedoe@example.com"
+    }
+  ]
+}
